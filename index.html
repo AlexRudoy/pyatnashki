@@ -1,56 +1,7 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=640">
-
-    <link rel="stylesheet" href="stylesheets/core.css" media="screen">
-    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-
-    <script type="text/javascript" src="javascripts/modernizr.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function () {
-        $('#main_content').headsmart()
-      })
-    </script>
-    <title>Pyatnashki by AlexRudoy</title>
-  </head>
-
-  <body>
-    <a id="forkme_banner" href="https://github.com/AlexRudoy/pyatnashki">View on GitHub</a>
-    <div class="shell">
-
-      <header>
-        <span class="ribbon-outer">
-          <span class="ribbon-inner">
-            <h1>Pyatnashki</h1>
-            <h2>Пятнашки</h2>
-          </span>
-          <span class="left-tail"></span>
-          <span class="right-tail"></span>
-        </span>
-      </header>
-
-      <section id="downloads">
-        <span class="inner">
-          <a href="https://github.com/AlexRudoy/pyatnashki/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/AlexRudoy/pyatnashki/tarball/master" class="tgz"><em>download</em> .TGZ</a>
-        </span>
-      </section>
-
-
-      <span class="banner-fix"></span>
-
-
-      <section id="main_content">
-        <p>
-</p>
-
-
-
+<head>
+<title ></title>
+<style>
 .b input
 {
      width: 52;
@@ -63,70 +14,84 @@
     width:320px;
     line-height:70px;
     text-align:center;
-    background:grey;
+	background:grey;
     background-repeat:no-repeat;
 }
+</style>
+</head>
+<body>
+<h2>Пятнашки</h2>
+<form name="pyat">
 
-
+<div class="b">
 <p>
-</p>
-
-<h2>
-<a id="Пятнашки" class="anchor" href="#%D0%9F%D1%8F%D1%82%D0%BD%D0%B0%D1%88%D0%BA%D0%B8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Пятнашки</h2>
-
-<p></p>
-
-<div>
-<p>
-
-
-
-
+<input type="button" name="button" value="1" onclick="game(0)">
+<input type="button" name="button" value="2" onclick="game(1)">
+<input type="button" name="button" value="3" onclick="game(2)">
+<input type="button" name="button" value="4" onclick="game(3)">
 </p>
 <p>
-
-
-
-
+<input type="button" name="button" value="5" onclick="game(4)">
+<input type="reset" name="reset" value="6" onclick="game(5)">
+<input type="reset" name="reset2" value="7" onclick="game(6)">
+<input type="button" name="button" value="8" onclick="game(7)">
 </p>
 <p>
-
-
-
-
+<input type="button" name="button" value="9" onclick="game(8)">
+<input type="button" name="button" value="10" onclick="game(9)">
+<input type="button" name="button" value="11" onclick="game(10)">
+<input type="button" name="button" value="12" onclick="game(11)">
 </p>
 <p>
-
-
-
-
+<input type="button" name="button" value="13" onclick="game(12)">
+<input type="button" name="button" value="14" onclick="game(13)">
+<input type="button" name="button" value="15" onclick="game(14)">
+<input type="button" name="button" value=" " onclick="game(15)">
 </p>
 </div>
-
 <p>
-
+<input type="button" value="начать игру" onclick="start()">
 </p>
+<script>
+//распределяем случайным образом числа по кнопкам так, чтобы они не повторялись
+function start(){
+
+for(var i = 0;i<16;i++){
+//выбираем случайным образом первую кнопку
+var num = Math.round(Math.random()*(15-i)+i)
+//меняем местами нулевую кнопку и num
+mychange(i,num);
+}
+}
+
+function mychange(m,n){
+//меняем местами кнопки c номерами n и m
+var but = document.pyat.elements;
+var tmp = but[m].value;
+but[m].value = but[n].value;
+but[n].value = tmp;
+}
+
+function game(n){
+var but = document.pyat.elements;
+//функция меняет местами кнопку n и пустую кнопку
+
+//проверяем кнопку снизу, если она пустая, меняем кнопки местам
+if (n>11);//кнопок внизу нет
+else if (but[n+4].value == " ") mychange(n,n+4);
+//проверяем кнопку сверху, если она пустая, меняем кнопки местами
+if (n<4); //кнопок вверху нет
+else if (but[n-4].value == " ") mychange(n,n-4);
+//проверяем кнопку справа, если она пустая, меняем кнопки местами
+if ((n%4) == 3);
+else if (but[n+1].value == " ") mychange(n,n+1);
+//проверяем кнопку слева, если она пустая, меняем кнопки местами
+if ((n%4) == 0);
+else if (but[n-1].value == " ") mychange(n,n-1);
+}
+</script>
 
 
 
-<p>
-</p>
-      </section>
-
-      <footer>
-        <span class="ribbon-outer">
-          <span class="ribbon-inner">
-            <p>this project by <a href="https://github.com/AlexRudoy">AlexRudoy</a> can be found on <a href="https://github.com/AlexRudoy/pyatnashki">GitHub</a></p>
-          </span>
-          <span class="left-tail"></span>
-          <span class="right-tail"></span>
-        </span>
-        <p>Generated with <a href="https://pages.github.com">GitHub Pages</a> using Merlot</p>
-        <span class="octocat"></span>
-      </footer>
-
-    </div>
-
-    
-  </body>
+</body>
 </html>
